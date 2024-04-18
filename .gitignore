@@ -1,2 +1,6 @@
+# Include vendor for debug purpose
+!/vendor
+
 node_modules
 package-lock.json
+composer.lock

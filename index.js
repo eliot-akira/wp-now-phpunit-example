@@ -12,12 +12,11 @@ async function main() {
 
   const scriptPath = import.meta.dirname
 
-  php.mount(path.join(scriptPath, 'phpunit'), `/phpunit`)
+  php.mount(path.join(scriptPath), `/here`)
 
   try {
     await php.cli([
-      'php',
-      `/phpunit/phpunit-9.6.17.phar`,
+      '/here/vendor/bin/phpunit',
       `--path=${wpNowOptions.documentRoot}`,
     ])
   } catch (resultOrError) {

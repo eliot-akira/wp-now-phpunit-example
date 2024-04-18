@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "NODE_ENV=test node index.js"
   },
   "dependencies": {
     "@wp-now/wp-now": "^0.1.69"
