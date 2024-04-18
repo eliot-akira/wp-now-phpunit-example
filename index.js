@@ -11,13 +11,20 @@ async function main() {
     reset: true,
   })
 
+  let bin = '/here/vendor/bin/phpunit'
+
+  if (args[0]==='--phar') {
+    bin = 'php'
+    args[0] = '/here/phpunit-9.6.17.phar'
+  }
+
   const scriptPath = import.meta.dirname
 
   php.mount(path.join(scriptPath), `/here`)
 
   try {
     await php.cli([
-      '/here/vendor/bin/phpunit',
+      bin,
       ...args,
       `--path=${wpNowOptions.documentRoot}`,
     ])
