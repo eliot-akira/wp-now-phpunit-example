@@ -2,12 +2,13 @@ import path from 'path'
 import { getWpNowConfig, startServer } from '@wp-now/wp-now'
 
 async function main() {
-
+  const args = process.argv.slice(2)
   const { php, options: wpNowOptions } = await startServer({
     ...await getWpNowConfig({
       path: process.cwd(),
     }),
-    mode: 'playground'
+    mode: 'playground',
+    reset: true,
   })
 
   const scriptPath = import.meta.dirname
@@ -17,6 +18,7 @@ async function main() {
   try {
     await php.cli([
       '/here/vendor/bin/phpunit',
+      ...args,
       `--path=${wpNowOptions.documentRoot}`,
     ])
   } catch (resultOrError) {
