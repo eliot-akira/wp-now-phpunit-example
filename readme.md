@@ -10,3 +10,13 @@ cd wp-now-phpunit-example
 npm install
 npm run start
 ```
+
+It ends with a WASM error, "null function or function signature mismatch".
+
+Compare with running from Composer-installed vendor folder:
+
+```sh
+npm run start:vendor
+```
+
+It ends with "Program terminated with exit(1)", which is the expected behavior because PHPUnit requires a test file.
